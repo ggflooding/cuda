@@ -488,7 +488,7 @@ void OutWatch(int t, double err, double rhoav){
 	printf("Average Density = %.15lf\n", rhoav);
 }
 
-void Outp(int t){
+void Outp(double t){
 	FILE *fp;
 	char filename[0];
 	sprintf(filename,"%d%s", t ,".dat");
