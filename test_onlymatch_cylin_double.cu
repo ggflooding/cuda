@@ -740,27 +740,7 @@ void OutWatch(int t, double err, double rhoav){
 }
 
 void Outp(int t){
-	FILE *fp;
-	char filename[0];
-	sprintf(filename,"%d%s", t ,".dat");
-	fp = fopen(filename, "w");
-	fprintf(fp, "Title=\"LBM Lid Driven Cavity\"\n");
-	fprintf(fp, "VARIABLES=\"X\",\"Y\",\"cylin\",\"U\",\"V\",\"P\",\"Temp\",\"OMG\"\n");
-	fprintf(fp, "ZONE T=\"BOX\",I=%d,J=%d,F=POINT\n", NY, NX);
-	for (int i = 0; i < NX; i++){
-		for (int j = 0; j < NY; j++){
-			fprintf(fp, "%.15lf ", (double)i / (NY - 1) / DX_LB);
-			fprintf(fp, "%.15lf ", (double)j / (NY - 1) / DX_LB);
-			fprintf(fp, "%.15lf ", domain[Ord2(i, j, NX)].TauG_LB);
-			fprintf(fp, "%.15lf ", domain[Ord2(i, j, NX)].u1[0]);
-			fprintf(fp, "%.15lf ", domain[Ord2(i, j, NX)].u1[1]);
-			fprintf(fp, "%.15lf ", domain[Ord2(i, j, NX)].rho);
-			fprintf(fp, "%.15lf ", ((domain[Ord2(i, j, NX)].T * 40.0) + 293.0));
-			fprintf(fp, "%.15lf\n", domain[Ord2(i, j, NX)].vor);
-		}
-	}
-	fclose(fp);
-	return;
+	
 }
 
 void Point_checkX_a(int t, double ux_a){
